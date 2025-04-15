@@ -1,6 +1,11 @@
 import TaskRow from "./TaskRow";
+import { useState } from "react";
 
 export default function ToDoTable(){
+
+    const [tasks, setTasks] = useState([]);
+    const [newTask, setTask] = useState('');
+
     return (
         <div>
             
