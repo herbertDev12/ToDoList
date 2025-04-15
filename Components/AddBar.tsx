@@ -1,3 +1,5 @@
+import AddButton from "./AddButton";
+
 export default function AddBar(){
     return (
         <form style={{
