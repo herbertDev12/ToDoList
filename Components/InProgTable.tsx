@@ -1,3 +1,5 @@
+import TaskRow from "./TaskRow";
+
 export default function InProgTable(){
     return (
         <div>
@@ -22,10 +24,10 @@ export default function InProgTable(){
                 </thead>
                 <tbody>
                     <tr>
-                        <th style={{ border: '4px double #009688', padding: '8px' }}>(Task1)</th>                        
+                        <TaskRow></TaskRow>                        
                     </tr>
                     <tr>
-                        <th style={{ border: '4px double #009688', padding: '8px' }}>(Task2)</th>  
+                        <TaskRow></TaskRow> 
                     </tr>
                 </tbody>
             </table>
