@@ -1,3 +1,5 @@
+import TaskRow from "./TaskRow";
+
 export default function ToDoTable(){
     return (
         <div>
@@ -28,10 +30,10 @@ export default function ToDoTable(){
                 </thead>
                 <tbody>
                     <tr>
-                        <th style={{ border: '4px double rgba(255, 255, 255, 0.7)', padding: '8px' }}>(Task1)</th>                        
+                        <TaskRow></TaskRow>                        
                     </tr>
                     <tr>
-                        <th style={{ border: '4px double rgba(255, 255, 255, 0.7)', padding: '8px' }}>(Task2)</th>  
+                        <TaskRow></TaskRow>     
                     </tr>
                 </tbody>
             </table>
