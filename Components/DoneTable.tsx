@@ -1,3 +1,5 @@
+import TaskDoneRow from "./TaskDoneRow";
+
 export default function DoneTable(){
     return (
         <div>
@@ -28,10 +30,10 @@ export default function DoneTable(){
                 </thead>
                 <tbody>
                     <tr>
-                        <th style={{ border: '4px double #009688', padding: '8px' }}>(Task1)</th>                        
+                        <TaskDoneRow></TaskDoneRow>
                     </tr>
                     <tr>
-                        <th style={{ border: '1px solid red', padding: '8px' }}>(Task2)</th>  
+                        <TaskDoneRow></TaskDoneRow> 
                     </tr>
                 </tbody>
             </table>
