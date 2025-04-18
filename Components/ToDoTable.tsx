@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import AddBar from './AddBar';
-import TaskRow from './TaskRow';
+import TaskRow from './TaskToDoRow';
 
 interface Task {
   id: number;
@@ -26,7 +26,8 @@ export default function ToDoTable() {
             onAdd={handleAddTask} 
           />
           
-          <table style={{ marginTop: '120px', marginLeft: '750px' }}>
+          <table style={{ marginTop: '120px', marginLeft: '250px' }}>
+            <thead>To-Do</thead>
             <tbody>
               {tasks.map((task) => (
                 <TaskRow key={task.id} taskName={task.name} />

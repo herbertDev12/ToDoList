@@ -12,9 +12,9 @@ export default function TaskRow({taskName} : TaskRowProps ) {
         border: '4px double #009688', 
         padding: '8px',
         display: 'flex',
-        alignItems: 'center',
         gap: '20px',
-        margin: '5px 0'
+        margin: '5px 0',
+        marginLeft: '0 px',
       }}>
         <CompletionButton/>
         <span style={{ minWidth: '120px' }}>{taskName}</span>

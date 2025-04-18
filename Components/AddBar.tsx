@@ -37,7 +37,7 @@ export default function AddBar({ newTask, setNewTask, onAdd }: AddBarProps) {
           color: 'white',
           border: 'none',
           borderRadius: '3px',
-          cursor: 'pointer'
+          cursor: 'pointer',
         }}
       >     +
       </button>
