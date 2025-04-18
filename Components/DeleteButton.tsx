@@ -1,7 +1,11 @@
-// DeleteButton.js
-export default function DeleteButton() {
+interface DeleteButtonProps{
+  onClick: () => void;
+}
+
+export default function DeleteButton({onClick} : DeleteButtonProps) {
     return (
       <button
+        onClick={onClick}
         style={{
           backgroundColor: '#ff4444',
           color: 'white',

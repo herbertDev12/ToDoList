@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import AddBar from './AddBar';
-import TaskRow from './TaskToDoRow';
+import TaskToDoRow from './TaskToDoRow';
 
 interface Task {
   id: number;
@@ -10,6 +10,10 @@ interface Task {
 export default function ToDoTable() {
     const [tasks, setTasks] = useState<Task[]>([]);
     const [newTask, setNewTask] = useState('');
+
+    const handleDeleteTask = (taskId: number) => {
+      setTasks(prevTasks => prevTasks.filter(task => task.id !== taskId));
+    }
 
     const handleAddTask = () => {
         if (newTask.trim()) {
@@ -30,7 +34,12 @@ export default function ToDoTable() {
             <thead>To-Do</thead>
             <tbody>
               {tasks.map((task) => (
-                <TaskRow key={task.id} taskName={task.name} />
+                <TaskToDoRow 
+                  key={task.id} 
+                  taskName={task.name}
+                  taskId={task.id}
+                  onDelete={handleDeleteTask}
+                />
               ))}
             </tbody>
           </table>

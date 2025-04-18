@@ -1,7 +1,10 @@
 import DeleteButton from "./DeleteButton"
 
 export default function TaskDoneRow(){
+
+  
     return(
+      
         <div>
             <th style={{ 
               border: '4px double #009688', 
