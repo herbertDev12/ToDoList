@@ -2,37 +2,31 @@ import TaskRow from "./TaskToDoRow";
 import AddBar from "./AddBar";
 import { useState } from "react";
 
-interface Task{
-  id: number;
-  name: string;
+interface InProgTableProps {
+  tasks: Task[];
+  onStatusChange: (taskId: number, newStatus: TaskStatus) => void;
+  onDelete: (taskId: number) => void;
 }
 
-export default function InProgTable(){
-  const [tasks, setTasks] = useState<Task[]>([]);
-  const [newTask, setNewTask] = useState('');
-  
-  const handleAddTask = () => {
-    if (newTask.trim()) {
-      setTasks([...tasks, { id: Date.now(), name: newTask }]);
-      setNewTask('');
-    }
-   };
+export default function InProgTable({ tasks, onStatusChange, onDelete }: InProgTableProps) {
   return (
     <div>
-      <AddBar 
-        newTask={newTask} 
-        setNewTask={setNewTask} 
-        onAdd={handleAddTask} 
-        />
-                  
-        <table style={{ marginTop: '120px', marginLeft: '750px' }}>
-           <tbody>
-              {tasks.map((task) => (
-                <TaskRow key={task.id} taskName={task.name} />
-              ))}
-            </tbody>
-        </table>
-      </div>
+      <table style={{ marginTop: '120px', marginLeft: '750px' }}>
+        <tbody>
+          {tasks.map((task) => (
+            <tr key={task.id}>
+              <td style={{/* tus estilos */}}>
+                <CompletionButton 
+                  onClick={() => onStatusChange(task.id, 'done')}
+                  status="inProgress"
+                />
+                <span style={{ minWidth: '140px' }}>{task.name}</span>
+                <DeleteButton onClick={() => onDelete(task.id)} />
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
   );
 }
-  
