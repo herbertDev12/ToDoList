@@ -1,4 +1,5 @@
 import TaskDoneRow from "./TaskDoneRow";
+import CompletionButton from "./CompletionButton";
 
 // En DoneTable.tsx
 interface DoneTableProps {
