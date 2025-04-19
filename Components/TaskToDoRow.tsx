@@ -2,17 +2,17 @@ import DeleteButton from "./DeleteButton";
 import CompletionButton from "./CompletionButton";
 import { TaskStatus, Task } from "../types";
 interface TaskToDoRowProps {
-  task: Task;
-  onStatusChange: (taskId: number, newStatus: TaskStatus) => void;
+  task: Task; 
+  onStatusChange: (newStatus: TaskStatus) => void; 
   onDelete: (taskId: number) => void;
 }
 
 export default function TaskToDoRow({ task, onStatusChange, onDelete }: TaskToDoRowProps) {
   return (
     <tr>
-      <td style={{/* tus estilos */}}>
+      <td>
         <CompletionButton 
-          onClick={() => onStatusChange(task.id, 'inProgress')}
+          onClick={() => onStatusChange('inProgress')}
           status="todo"
         />
         <span style={{ minWidth: '140px' }}>{task.name}</span>

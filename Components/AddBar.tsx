@@ -1,28 +1,46 @@
-import React from 'react';
-import { useState } from 'react';
-import { Task } from '../types';
+// AddBar.tsx (completo)
+import React, { FormEvent } from 'react';
+
 interface AddBarProps {
-  onAdd: (task: Task) => void;
+  newTask: string;
+  setNewTask: React.Dispatch<React.SetStateAction<string>>;
+  onAdd: () => void;
 }
 
-export default function AddBar({ onAdd }: AddBarProps) {
-  const [newTask, setNewTask] = useState('');
-
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+export default function AddBar({ newTask, setNewTask, onAdd }: AddBarProps) {
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (newTask.trim()) {
-      onAdd({
-        id: Date.now(),
-        name: newTask,
-        status: 'todo'
-      });
-      setNewTask('');
-    }
+    onAdd();
   };
 
   return (
-    <form onSubmit={handleSubmit} style={{/* tus estilos */}}>
-      {/* ... resto del componente */}
+    <form onSubmit={handleSubmit} style={{
+      position: "absolute",
+      top: "100px",
+      left: "750px",
+    }}>
+      <input 
+        type="text" 
+        placeholder="Type here..."
+        value={newTask}
+        onChange={(e) => setNewTask(e.target.value)}
+        style={{
+          width: '150px',
+          padding: '5px',
+          marginRight: '10px'
+        }}
+      />           
+      <button 
+        type="submit"
+        style={{
+          padding: '5px 15px',
+          backgroundColor: '#4CAF50',
+          color: 'white',
+          border: 'none',
+          borderRadius: '3px',
+          cursor: 'pointer',
+        }}
+      >+</button>
     </form>
   );
 }

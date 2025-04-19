@@ -2,7 +2,6 @@ import { useState } from 'react';
 import AddBar from './AddBar';
 import TaskToDoRow from './TaskToDoRow';
 
-
 interface Task {
   id: number;
   name: string;
@@ -36,11 +35,11 @@ export default function ToDoTable() {
             <tbody>
               {tasks.map((task) => (
                 <TaskToDoRow 
-                  key={task.id} 
-                  taskName={task.name}
-                  taskId={task.id}
-                  onDelete={handleDeleteTask}
-                />
+                key={task.id}
+                task={task} // ✅
+                onStatusChange={(newStatus) => handleStatusChange(task.id, newStatus)} // ✅
+                onDelete={handleDeleteTask}
+              />
               ))}
             </tbody>
           </table>

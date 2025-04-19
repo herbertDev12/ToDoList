@@ -1,53 +1,52 @@
-
 import { useState } from 'react';
-import Title from './Components/Title';
-import ToDoTable from './Components/ToDoTable';
-import DoneTable from './Components/DoneTable';
-import InProgTable from './Components/InProgTable';
-import { TaskStatus } from './types';
+import AddTask from './AddTask';
+import ToDoTable from './ToDoTable';
+import InProgressTable from './InProgressTable';
+import DoneTable from './DoneTable';
+import { Task, TaskStatus } from './types';
 
-export interface Task {
-  id: number;
-  name: string;
-  status: TaskStatus;
-}
-
-const App: React.FC = () => {
+export default function App() {
   const [tasks, setTasks] = useState<Task[]>([]);
 
-  // Mover tarea entre estados
-  const handleStatusChange = (taskId: number, newStatus: TaskStatus) => {
-    setTasks(prevTasks => 
-      prevTasks.map(task => 
-        task.id === taskId ? { ...task, status: newStatus } : task
-      )
-    );
+  const handleAddTask = (taskName: string) => {
+    setTasks(prev => [...prev, {
+      id: Date.now(),
+      name: taskName,
+      status: 'todo'
+    }]);
   };
 
-  // Eliminar tarea
-  const handleDeleteTask = (taskId: number) => {
-    setTasks(prevTasks => prevTasks.filter(task => task.id !== taskId));
+  const handleStatusChange = (taskId: number, newStatus: TaskStatus) => {
+    setTasks(prev => prev.map(task =>
+      task.id === taskId ? { ...task, status: newStatus } : task
+    ));
+  };
+
+  const handleDelete = (taskId: number) => {
+    setTasks(prev => prev.filter(task => task.id !== taskId));
   };
 
   return (
     <div className="App">
-      <Title/>
-      <ToDoTable
-        tasks={tasks.filter(t => t.status === 'todo')}
-        onStatusChange={handleStatusChange}
-        onDelete={handleDeleteTask}
-      />
-      <InProgTable
-        tasks={tasks.filter(t => t.status === 'inProgress')}
-        onStatusChange={handleStatusChange}
-        onDelete={handleDeleteTask}
-      />
-      <DoneTable
-        tasks={tasks.filter(t => t.status === 'done')}
-        onDelete={handleDeleteTask}
-      />
+      <h1>Task Manager</h1>
+      <AddTask onAdd={handleAddTask} />
+      
+      <div style={{ display: 'flex', gap: '20px' }}>
+        <TodoTable
+          tasks={tasks.filter(t => t.status === 'todo')}
+          onStatusChange={handleStatusChange}
+          onDelete={handleDelete}
+        />
+        <InProgressTable
+          tasks={tasks.filter(t => t.status === 'inProgress')}
+          onStatusChange={handleStatusChange}
+          onDelete={handleDelete}
+        />
+        <DoneTable
+          tasks={tasks.filter(t => t.status === 'done')}
+          onDelete={handleDelete}
+        />
+      </div>
     </div>
   );
-};
-
-export default App;
+}
