@@ -1,8 +1,8 @@
 import { useState } from 'react';
-import AddTask from './AddTask';
-import TodoTable from './TodoTable';
-import InProgressTable from './InProgressTable';
-import DoneTable from './DoneTable';
+import AddTask from './Components/AddTask';
+import TodoTable from './Components/TodoTable';
+import InProgressTable from './Components/InProgressTable';
+import DoneTable from './Components/DoneTable'
 import { Task, TaskStatus } from './types';
 
 export default function App() {
@@ -44,6 +44,7 @@ export default function App() {
         />
         <DoneTable
           tasks={tasks.filter(t => t.status === 'done')}
+          onStatusChange={handleStatusChange}
           onDelete={handleDelete}
         />
       </div>
