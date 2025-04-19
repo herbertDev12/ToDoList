@@ -1,43 +1,24 @@
-import { useState } from 'react';
-import AddBar from './AddTask';
-import TaskToDoRow from './TaskToDoRow';
 import { Task, TaskStatus } from '../types';
+import TaskRow from './TaskRow';
 
-interface ToDoTableProps{
-  tasks,
+interface TodoTableProps {
+  tasks: Task[];
+  onStatusChange: (taskId: number, newStatus: TaskStatus) => void;
+  onDelete: (taskId: number) => void;
 }
 
-export default function ToDoTable({ 
-  tasks, 
-  onStatusChange, 
-  onDelete 
-}: ToDoTableProps) { // Add props here
-  // Remove local state for tasks as they're now coming from props
-  const [newTask, setNewTask] = useState('');
-  
-  const handleAddTask = () => {
-    if (newTask.trim()) {
-      onStatusChange(Date.now(), 'todo'); // Update this to use the prop
-      setNewTask('');
-    }
-  };
-
+export default function TodoTable({ tasks, onStatusChange, onDelete }: TodoTableProps) {
   return (
-    <div>
-      <AddBar 
-        newTask={newTask} 
-        setNewTask={setNewTask} 
-        onAdd={handleAddTask} 
-      />
-      <table style={{ marginTop: '120px', marginLeft: '250px' }}>
-        <thead>To-Do</thead>
+    <div className="column">
+      <h2>To-Do ({tasks.length})</h2>
+      <table>
         <tbody>
           {tasks.map((task) => (
-            <TaskToDoRow 
+            <TaskRow
               key={task.id}
-              task={task} 
+              task={task}
               onStatusChange={(newStatus) => onStatusChange(task.id, newStatus)}
-              onDelete={onDelete}
+              onDelete={() => onDelete(task.id)}
             />
           ))}
         </tbody>

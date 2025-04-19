@@ -1,4 +1,4 @@
-import { Task, TaskStatus } from './types';
+import { Task, TaskStatus } from "../types";
 
 interface TaskRowProps {
   task: Task;
