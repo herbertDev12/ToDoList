@@ -1,5 +1,6 @@
 import DeleteButton from "./DeleteButton";
 import CompletionButton from "./CompletionButton";
+import { TaskStatus, Task } from "../types";
 interface TaskToDoRowProps {
   task: Task;
   onStatusChange: (taskId: number, newStatus: TaskStatus) => void;

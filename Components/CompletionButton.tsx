@@ -1,5 +1,5 @@
 import { useState } from 'react';
-
+import { TaskStatus } from '../types';
 // En CompletionButton.tsx
 interface CompletionButtonProps {
   status: TaskStatus;

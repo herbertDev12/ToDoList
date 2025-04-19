@@ -1,6 +1,7 @@
 import TaskDoneRow from "./TaskDoneRow";
 import CompletionButton from "./CompletionButton";
-
+import DeleteButton from "./DeleteButton";
+import { Task } from "../types";
 // En DoneTable.tsx
 interface DoneTableProps {
     tasks: Task[];

@@ -1,6 +1,6 @@
 import React from 'react';
 import { useState } from 'react';
-// En AddBar.tsx (modificar para incluir estado inicial)
+import { Task } from '../types';
 interface AddBarProps {
   onAdd: (task: Task) => void;
 }

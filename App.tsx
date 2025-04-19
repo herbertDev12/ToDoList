@@ -1,11 +1,10 @@
-// En App.tsx (componente principal)
+
 import { useState } from 'react';
 import Title from './Components/Title';
 import ToDoTable from './Components/ToDoTable';
 import DoneTable from './Components/DoneTable';
 import InProgTable from './Components/InProgTable';
-
-export type TaskStatus = 'todo' | 'inProgress' | 'done';
+import { TaskStatus } from './types';
 
 export interface Task {
   id: number;

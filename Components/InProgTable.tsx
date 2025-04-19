@@ -1,7 +1,6 @@
-import TaskRow from "./TaskToDoRow";
-import AddBar from "./AddBar";
-import { useState } from "react";
-
+import { Task, TaskStatus } from "../types";
+import CompletionButton from "./CompletionButton";
+import DeleteButton from "./DeleteButton";
 interface InProgTableProps {
   tasks: Task[];
   onStatusChange: (taskId: number, newStatus: TaskStatus) => void;
