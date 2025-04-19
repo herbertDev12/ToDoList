@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import AddTask from './AddTask';
-import ToDoTable from './ToDoTable';
+import TodoTable from './TodoTable';
 import InProgressTable from './InProgressTable';
 import DoneTable from './DoneTable';
 import { Task, TaskStatus } from './types';
